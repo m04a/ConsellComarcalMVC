@@ -64,6 +64,28 @@ class SlidersPDO extends ModelPDO
 
         return $stm->fetch(\PDO::FETCH_ASSOC);
     }
+    public function obtenirRuta($id)
+    {
+        $taula2 = $this->taula;
+
+        $query = "select imatge from $taula2 where id = :id;";
+        $stm = $this->sql->prepare($query);
+        $result = $stm->execute([':id' => $id]);
+
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            $code = $stm->errorCode();
+            die("Error.   {$err[0]} - {$err[1]}\n{$err[2]} $query");
+        }
+        
+        $array= $stm->fetch(\PDO::FETCH_ASSOC);
+
+        return $array['imatge'];
+    }
+    public function deletefile($ruta)
+    {
+        unlink($ruta);
+    }
     public function add()
     {
         $taula2 = $this->taula;

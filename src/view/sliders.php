@@ -54,7 +54,9 @@
                                             </td>
                                             <?php if ($dadesUsuariLogat["rol"] === "Administrador") { ?>
                                                 <td class="text-sm text-gray-500 px-6 py-4 whitespace-nowrap dark:text-gray-400">
-                                                    <img src="<?php echo $actual['imatge']; ?>" alt="<?php echo $actual['imatge']; ?>" class="w-44 h-32">
+                                                    <img src="<?php echo $actual['imatge']; ?>" alt="<?php if($comprobacioFitxerExisteix){echo $actual['imatge'];}else {
+                                                        echo 'Imatge Inexistent';
+                                                    } ?>" class="w-44 h-32">
                                                 </td>
                                             <?php } ?>  
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
