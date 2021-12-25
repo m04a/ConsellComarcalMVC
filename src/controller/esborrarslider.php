@@ -8,6 +8,10 @@ function ctrlEsborrarslider($peticio, $resposta, $contenidor)
 
     $idslider = filter_var($idslider2, FILTER_SANITIZE_NUMBER_INT);
 
+    $rutaImatge = $slidersPDO->obtenirRuta($idslider);
+
+    $slidersPDO->deletefile($rutaImatge);
+
     $slidersPDO->delete($idslider);
 
     $resposta->redirect("Location:index.php?r=sliders");
